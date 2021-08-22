@@ -5,52 +5,64 @@ import faker from 'faker';
 const prisma = new PrismaClient();
 
 async function main() {
-  // Set faker seed for consistency
   faker.seed(1234567890);
+  const categories = [
+    faker.hacker.ingverb(),
+    faker.hacker.ingverb(),
+    faker.hacker.ingverb(),
+    faker.hacker.ingverb(),
+    faker.hacker.ingverb(),
+  ];
 
-  console.log(faker.internet.email());
-  console.log(faker.internet.email());
+  await prisma.category.createMany({
+    data: categories.map(name => ({
+      name,
+    })),
+  });
 
-  // const alice = await prisma.user.upsert({
-  //   where: { email: faker.internet.email() },
-  //   update: {},
-  //   create: {
-  //     email: faker.,
-  //     name: 'Alice',
-  //     password: bcrypt.hashSync('password', 10),
-  //     posts: {
-  //       create: {
-  //         title: 'Check out Prisma with Next.js',
-  //         content: 'https://www.prisma.io/nextjs',
-  //         published: true,
-  //       },
-  //     },
-  //   },
-  // });
+  const categoriesId = (
+    await prisma.category.findMany({
+      select: { id: true },
+    })
+  ).map(d => d.id);
 
-  // const bob = await prisma.user.upsert({
-  //   where: { email: 'bob@gmail.com' },
-  //   update: {},
-  //   create: {
-  //     email: 'bob@gmail.com',
-  //     name: 'Bob',
-  //     password: 'lol',
-  //     posts: {
-  //       create: [
-  //         {
-  //           title: 'Follow Prisma on Twitter',
-  //           content: 'https://twitter.com/prisma',
-  //           published: true,
-  //         },
-  //         {
-  //           title: 'Follow Nexus on Twitter',
-  //           content: 'https://twitter.com/nexusgql',
-  //           published: true,
-  //         },
-  //       ],
-  //     },
-  //   },
-  // });
+  const userCount = 10;
+  for (let i = 0; i < userCount; i++) {
+    const email = faker.internet.email();
+
+    await prisma.user.upsert({
+      where: { email },
+      update: {},
+      create: {
+        email,
+        password: bcrypt.hashSync(`password-${i}`, 10),
+        name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+        profile: {
+          create: {
+            bio: `${faker.name.jobDescriptor()}`,
+            avatar: faker.internet.avatar(),
+          },
+        },
+        posts: {
+          create: Array.from({ length: faker.random.number({ min: 1, max: 10 }) }, () => ({
+            title: faker.company.catchPhrase(),
+            content: faker.lorem.paragraphs(3, '\\n\\n'),
+            published: true,
+            categories: {
+              create: {
+                category: {
+                  connect: {
+                    id: faker.random.arrayElement(categoriesId),
+                  },
+                },
+              },
+            },
+            createdAt: faker.date.between('2021-01-01', '2021-12-31'),
+          })),
+        },
+      },
+    });
+  }
 }
 
 main()
