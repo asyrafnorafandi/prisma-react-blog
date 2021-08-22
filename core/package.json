@@ -4,7 +4,7 @@
   "description": "Simple blog core backend",
   "main": "index.ts",
   "scripts": {
-    "start:dev": "nodemon index.ts",
+    "start:dev": "nodemon src/app.ts",
     "ts-node": "ts-node --compiler-options \"{\\\"module\\\":\\\"commonjs\\\"}\""
   },
   "author": "Asyraf Norafandi",
