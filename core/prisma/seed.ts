@@ -5,7 +5,7 @@ import faker from 'faker';
 const prisma = new PrismaClient();
 
 async function main() {
-  faker.seed(1234567890);
+  // faker.seed(1234567890);
   const categories = [
     faker.hacker.ingverb(),
     faker.hacker.ingverb(),
