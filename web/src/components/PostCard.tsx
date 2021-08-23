@@ -3,7 +3,7 @@ import moment from 'moment';
 
 export function PostCard(data: PostsWithAuthor) {
   return (
-    <div className="p-6 bg-white rounded-xl shadow-md m-3 max-w-md transition duration-200 hover:shadow-2xl">
+    <div className="p-6 bg-white rounded-xl shadow-md m-3 max-w-md transition duration-200 hover:shadow-2xl cursor-pointer">
       <div className="my-2 flex justify-between items-center">
         <div className="bg-blue-400 text-white p-2 rounded capitalize">{data.categories[0].category.name}</div>
         <div className="text-gray-500">{moment(data.createdAt).fromNow()}</div>

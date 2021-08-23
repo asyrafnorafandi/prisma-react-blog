@@ -10,9 +10,9 @@ export class PostController {
   }
 
   /**
-   * Get all public posts
+   * List all public posts
    */
-  get(): Promise<PostsWithAuthor[]> {
+  list(): Promise<PostsWithAuthor[]> {
     return this.prisma.post.findMany({
       where: {
         published: true,
@@ -22,5 +22,24 @@ export class PostController {
       },
       ...postsWithAuthor,
     });
+  }
+
+  /**
+   * Get data of specific public blog post
+   */
+  async get(id: string): Promise<PostsWithAuthor> {
+    const post = await this.prisma.post.findFirst({
+      where: {
+        id,
+        published: true,
+      },
+      ...postsWithAuthor,
+    });
+
+    if (!post) {
+      throw new Error('Blog post not found.');
+    }
+
+    return post;
   }
 }
