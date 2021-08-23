@@ -1,11 +1,12 @@
-import { Post, PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
+import { prismaClient } from '../utils';
 import { postsWithAuthor, PostsWithAuthor } from '../interfaces/post.interface';
 
 export class PostController {
   private prisma: PrismaClient;
 
   constructor() {
-    this.prisma = new PrismaClient();
+    this.prisma = prismaClient;
   }
 
   /**
@@ -15,6 +16,9 @@ export class PostController {
     return this.prisma.post.findMany({
       where: {
         published: true,
+      },
+      orderBy: {
+        createdAt: 'desc',
       },
       ...postsWithAuthor,
     });

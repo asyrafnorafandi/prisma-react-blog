@@ -33,3 +33,7 @@ export const routeConfigs: RouteConfig[] = [
     ),
   },
 ];
+
+export const appConfig = {
+  API_URL: 'http://localhost:8000',
+};

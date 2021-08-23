@@ -7,11 +7,11 @@ const prisma = new PrismaClient();
 async function main() {
   // faker.seed(1234567890);
   const categories = [
-    faker.hacker.ingverb(),
-    faker.hacker.ingverb(),
-    faker.hacker.ingverb(),
-    faker.hacker.ingverb(),
-    faker.hacker.ingverb(),
+    faker.company.bsNoun(),
+    faker.company.bsNoun(),
+    faker.company.bsNoun(),
+    faker.company.bsNoun(),
+    faker.company.bsNoun(),
   ];
 
   await prisma.category.createMany({
@@ -44,7 +44,7 @@ async function main() {
           },
         },
         posts: {
-          create: Array.from({ length: faker.random.number({ min: 1, max: 10 }) }, () => ({
+          create: Array.from({ length: faker.datatype.number({ min: 1, max: 10 }) }, () => ({
             title: faker.company.catchPhrase(),
             content: faker.lorem.paragraphs(3, '\\n\\n'),
             published: true,
@@ -57,7 +57,7 @@ async function main() {
                 },
               },
             },
-            createdAt: faker.date.between('2021-01-01', '2021-12-31'),
+            createdAt: faker.date.between('2021-01-01', '2021-07-31'),
           })),
         },
       },

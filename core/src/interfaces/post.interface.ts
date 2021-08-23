@@ -7,6 +7,11 @@ export const postsWithAuthor = Prisma.validator<Prisma.PostArgs>()({
     content: true,
     createdAt: true,
     updatedAt: true,
+    categories: {
+      select: {
+        category: true,
+      },
+    },
     author: {
       select: {
         id: true,

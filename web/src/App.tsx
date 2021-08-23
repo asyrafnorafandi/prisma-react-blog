@@ -21,6 +21,7 @@ export default function App() {
                 <Link
                   className="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-500 hover:text-white"
                   to={r.path}
+                  key={r.name}
                 >
                   {r.logo}
                 </Link>
@@ -29,10 +30,10 @@ export default function App() {
           </div>
         </div>
 
-        <div className="flex-1 p-10 bg-blue-50">
+        <div className="p-4 bg-blue-50">
           <Switch>
             {routeConfigs.map(r => {
-              return <Route path={r.path} exact component={r.component}></Route>;
+              return <Route path={r.path} exact component={r.component} key={r.name}></Route>;
             })}
           </Switch>
         </div>
