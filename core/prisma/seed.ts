@@ -46,7 +46,7 @@ async function main() {
         posts: {
           create: Array.from({ length: faker.datatype.number({ min: 1, max: 10 }) }, () => ({
             title: faker.company.catchPhrase(),
-            content: faker.lorem.paragraphs(3, '\\n\\n'),
+            content: faker.lorem.paragraphs(6, '<br /><br />'),
             published: true,
             categories: {
               create: {

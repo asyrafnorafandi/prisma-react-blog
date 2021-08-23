@@ -30,7 +30,7 @@ export default function App() {
           </div>
         </div>
 
-        <div className="p-4 bg-blue-50">
+        <div className="p-4 bg-blue-50 relative">
           <Switch>
             {routeConfigs.map(r => {
               return <Route path={r.path} exact component={r.component} key={r.name}></Route>;
