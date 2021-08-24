@@ -1,3 +1,3 @@
 import PostSeed from './post.seed';
-
-export { PostSeed };
+import AuthSeed from './auth.seed';
+export { PostSeed, AuthSeed };

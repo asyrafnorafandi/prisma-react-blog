@@ -1,0 +1,6 @@
+{
+  "auth": {
+    "secret": "random",
+    "tokenExpiry": "1h"
+  }
+}

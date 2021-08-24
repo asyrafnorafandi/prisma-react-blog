@@ -1,0 +1,5 @@
+{
+  "auth": {
+    "secret": "JWT_SECRET"
+  }
+}
