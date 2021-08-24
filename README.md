@@ -2,6 +2,8 @@
 
 # Simple Blog using Prisma & React
 
+![demo](./docs/demo.gif)
+
 This repo is just a simple test blog web application that utilizes the following technology stack:
 
 - ReactJS
