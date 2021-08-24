@@ -1,6 +1,23 @@
-version: '3.7'
+version: "3.7"
 
 services:
+  core:
+    build: ./core
+    container_name: blog_core
+    depends_on:
+      - database
+    ports:
+      - 8000:8000
+    environment:
+      DATABASE_URL: postgresql://admin:admin@database:5432/blogdb?schema=public
+      JWT_SECRET: topsecret
+
+  web:
+    build: ./web
+    container_name: blog_web
+    ports:
+      - 3000:80
+
   database:
     image: postgres:12.7
     container_name: blog_db
