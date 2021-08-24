@@ -6,6 +6,7 @@
   "scripts": {
     "start:dev": "nodemon src/app.ts",
     "ts-node": "ts-node --compiler-options \"{\\\"module\\\":\\\"commonjs\\\"}\"",
+    "build": "tsc --project tsconfig.build.json",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
