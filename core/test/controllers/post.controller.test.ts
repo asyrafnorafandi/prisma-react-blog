@@ -8,7 +8,7 @@ describe('PostController', () => {
   const prismaClient = new PrismaClient({
     datasources: {
       db: {
-        url: `postgresql://admin:admin@localhost:5432/blogdb?schema=${testSchemaName}`,
+        url: `postgresql://${process.env.DATABASE_USER}:${process.env.DATABASE_PASS}@${process.env.DATABASE_HOST}:${process.env.DATABASE_PORT}/${process.env.DATABASE_NAME}?schema=${testSchemaName}`,
       },
     },
   });
