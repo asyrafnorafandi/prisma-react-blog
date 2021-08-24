@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { PostRoutes } from './routes';
+import { AuthRoutes, PostRoutes } from './routes';
 
 // Configs
 const app = express();
@@ -12,10 +12,23 @@ app.use(
     origin: '*',
   }),
 );
+app.use(express.json());
 
 // Register routes
-app.get('/', (req, res) => res.send('Express + TypeScript Server'));
+app.get('/', (req, res) =>
+  res.send({
+    message: 'Server health 😉',
+  }),
+);
 app.use('/posts', PostRoutes);
+app.use('/auth', AuthRoutes);
+
+// Error handling
+app.use((err, req, res, next) => {
+  res.status(500).send({
+    message: err.message,
+  });
+});
 
 // Start server
 app.listen(PORT, () => {
