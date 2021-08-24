@@ -3,8 +3,8 @@ name: Core unit tests
 on:
   pull_request:
     branches: [main]
-  paths:
-    - "core/**"
+    paths:
+      - "core/**"
 
 jobs:
   build:
