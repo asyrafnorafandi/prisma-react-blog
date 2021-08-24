@@ -23,7 +23,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: install dependencies, run tests and test build
-        working-directory: ./app
+        working-directory: ./core
         run: |
           npm ci
           npm run test:cov
