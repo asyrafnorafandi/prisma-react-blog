@@ -5,8 +5,8 @@ import { postsWithAuthor, PostsWithAuthor } from '../interfaces/post.interface';
 export class PostController {
   private prisma: PrismaClient;
 
-  constructor() {
-    this.prisma = prismaClient;
+  constructor(pc?: PrismaClient) {
+    this.prisma = pc || prismaClient;
   }
 
   /**
