@@ -37,3 +37,8 @@ export interface PostsWithAuthor {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface GlobalContextProps {
+  loginModal: boolean;
+  toggleLoginModal: () => void;
+}

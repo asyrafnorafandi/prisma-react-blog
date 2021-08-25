@@ -1,3 +1,4 @@
 import { PostCard } from './PostCard';
-
-export { PostCard };
+import { Header } from './Header';
+import { LoginModal } from './LoginModal';
+export { PostCard, Header, LoginModal };

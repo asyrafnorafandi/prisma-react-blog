@@ -5,7 +5,6 @@ import { PostApi } from '../providers';
 
 export function Home() {
   const [posts, setPosts] = useState<PostsWithAuthor[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchPosts();
