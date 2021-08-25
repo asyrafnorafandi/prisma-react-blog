@@ -1,6 +1,6 @@
-import { PostCardData, PostsWithAuthor } from '../interfaces';
+import { PostsWithAuthor } from '../interfaces';
 import moment from 'moment';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 export function PostCard(data: PostsWithAuthor) {
   const myRef: any = useRef(null);
